@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Permission Screen -->
+        <div id="permissionScreen" class="screen active">
+            <div class="permission-card">
+                <div class="icon-location">📍</div>
+                <h1>Weather Agent</h1>
+                <p>We need your location to provide accurate weather information for your area.</p>
+                <button id="allowLocationBtn" class="btn-primary">Allow Location Access</button>
+                <p class="privacy-note">Your location is only used to fetch weather data and is not stored.</p>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="screen">
+            <div class="loader"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <!-- Weather Display Screen -->
+        <div id="weatherScreen" class="screen">
+            <div class="weather-card">
+                <div class="location-info">
+                    <h2 id="cityName">City Name</h2>
+                    <p id="dateTime"></p>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temperature-display">
+                        <span id="temperature">--</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    <div class="weather-icon" id="weatherIcon">🌤️</div>
+                </div>
+
+                <div class="weather-description">
+                    <h3 id="weatherDesc">Loading...</h3>
+                    <p id="feelsLike">Feels like --°C</p>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">💧</span>
+                        <div class="detail-info">
+                            <p class="detail-label">Humidity</p>
+                            <p class="detail-value" id="humidity">--%</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">💨</span>
+                        <div class="detail-info">
+                            <p class="detail-label">Wind Speed</p>
+                            <p class="detail-value" id="windSpeed">-- km/h</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🌡️</span>
+                        <div class="detail-info">
+                            <p class="detail-label">Pressure</p>
+                            <p class="detail-value" id="pressure">-- hPa</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">👁️</span>
+                        <div class="detail-info">
+                            <p class="detail-label">Visibility</p>
+                            <p class="detail-value" id="visibility">-- km</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="refreshBtn" class="btn-refresh">Refresh Weather</button>
+                
+                <!-- API Usage Counter -->
+                <div class="api-usage-note">
+                    <p class="usage-header">🆓 Free Version</p>
+                    <div class="usage-stats">
+                        <div class="usage-item">
+                            <span class="usage-label">Calls Used:</span>
+                            <span class="usage-value" id="apiCallCount">0</span>
+                        </div>
+                        <div class="usage-item">
+                            <span class="usage-label">Remaining:</span>
+                            <span class="usage-value" id="remainingCalls">1000</span>
+                        </div>
+                        <div class="usage-item">
+                            <span class="usage-label">Resets in:</span>
+                            <span class="usage-value" id="resetTime">24h 0m</span>
+                        </div>
+                    </div>
+                    <p class="usage-footer">Limited to 1,000 API calls per 24 hours</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Screen -->
+        <div id="errorScreen" class="screen">
+            <div class="error-card">
+                <div class="error-icon">⚠️</div>
+                <h2>Oops!</h2>
+                <p id="errorMessage">Something went wrong.</p>
+                <button id="retryBtn" class="btn-primary">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="counter.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
