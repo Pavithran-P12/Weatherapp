@@ -4,72 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Animated background particles -->
+    <div class="bg-particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="container">
         <!-- Permission Screen -->
         <div id="permissionScreen" class="screen active">
-            <div class="permission-card">
-                <div class="icon-location">📍</div>
+            <div class="permission-card glass-card">
+                <div class="icon-location">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#667eea">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
                 <h1>Weather Agent</h1>
-                <p>We need your location to provide accurate weather information for your area.</p>
-                <button id="allowLocationBtn" class="btn-primary">Allow Location Access</button>
-                <p class="privacy-note">Your location is only used to fetch weather data and is not stored.</p>
+                <p>Get real-time weather updates powered by your location.</p>
+                <button id="allowLocationBtn" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Allow Location Access
+                </button>
+
+                <div class="divider"><span>or</span></div>
+
+                <div class="search-box">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="cityInput" placeholder="Search any city..." autocomplete="off">
+                    <button id="searchCityBtn" class="btn-search" title="Search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </div>
+
+                <p class="privacy-note">Your location is only used to fetch weather data and is never stored.</p>
             </div>
         </div>
 
         <!-- Loading Screen -->
         <div id="loadingScreen" class="screen">
-            <div class="loader"></div>
-            <p>Fetching weather data...</p>
+            <div class="loading-wrapper">
+                <div class="loader">
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                    <div class="loader-ring"></div>
+                    <svg class="loader-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+                </div>
+                <p>Fetching weather data...</p>
+            </div>
         </div>
 
         <!-- Weather Display Screen -->
         <div id="weatherScreen" class="screen">
-            <div class="weather-card">
+            <div class="weather-card glass-card">
+                <!-- Search bar on weather screen -->
+                <div class="weather-search-bar">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="cityInputWeather" placeholder="Search another city..." autocomplete="off">
+                    <button id="searchCityBtnWeather" class="btn-search-sm" title="Search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </div>
+
                 <div class="location-info">
                     <h2 id="cityName">City Name</h2>
                     <p id="dateTime"></p>
                 </div>
                 
                 <div class="weather-main">
-                    <div class="temperature-display">
-                        <span id="temperature">--</span>
-                        <span class="unit">°C</span>
+                    <div class="weather-main-left">
+                        <div class="temperature-display">
+                            <span id="temperature">--</span><span class="unit">°C</span>
+                        </div>
+                        <p class="feels-like-text" id="feelsLike">Feels like --°C</p>
                     </div>
-                    <div class="weather-icon" id="weatherIcon">🌤️</div>
-                </div>
-
-                <div class="weather-description">
-                    <h3 id="weatherDesc">Loading...</h3>
-                    <p id="feelsLike">Feels like --°C</p>
+                    <div class="weather-main-right">
+                        <div class="weather-icon" id="weatherIcon">🌤️</div>
+                        <h3 id="weatherDesc" class="weather-desc-text">Loading...</h3>
+                    </div>
                 </div>
 
                 <div class="weather-details">
                     <div class="detail-item">
-                        <span class="detail-icon">💧</span>
+                        <div class="detail-icon-wrap">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
                         <div class="detail-info">
                             <p class="detail-label">Humidity</p>
                             <p class="detail-value" id="humidity">--%</p>
                         </div>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-icon">💨</span>
+                        <div class="detail-icon-wrap">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                        </div>
                         <div class="detail-info">
                             <p class="detail-label">Wind Speed</p>
                             <p class="detail-value" id="windSpeed">-- km/h</p>
                         </div>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-icon">🌡️</span>
+                        <div class="detail-icon-wrap">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
                         <div class="detail-info">
                             <p class="detail-label">Pressure</p>
                             <p class="detail-value" id="pressure">-- hPa</p>
                         </div>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-icon">👁️</span>
+                        <div class="detail-icon-wrap">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </div>
                         <div class="detail-info">
                             <p class="detail-label">Visibility</p>
                             <p class="detail-value" id="visibility">-- km</p>
@@ -77,37 +129,49 @@
                     </div>
                 </div>
 
-                <button id="refreshBtn" class="btn-refresh">Refresh Weather</button>
+                <div class="weather-actions">
+                    <button id="refreshBtn" class="btn-refresh">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                        Refresh
+                    </button>
+                    <button id="locateBtn" class="btn-locate" title="Use my location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        My Location
+                    </button>
+                </div>
                 
                 <!-- API Usage Counter -->
                 <div class="api-usage-note">
-                    <p class="usage-header">🆓 Free Version</p>
                     <div class="usage-stats">
                         <div class="usage-item">
-                            <span class="usage-label">Calls Used:</span>
+                            <span class="usage-label">Calls</span>
                             <span class="usage-value" id="apiCallCount">0</span>
                         </div>
                         <div class="usage-item">
-                            <span class="usage-label">Remaining:</span>
+                            <span class="usage-label">Left</span>
                             <span class="usage-value" id="remainingCalls">1000</span>
                         </div>
                         <div class="usage-item">
-                            <span class="usage-label">Resets in:</span>
+                            <span class="usage-label">Resets</span>
                             <span class="usage-value" id="resetTime">24h 0m</span>
                         </div>
                     </div>
-                    <p class="usage-footer">Limited to 1,000 API calls per 24 hours</p>
                 </div>
             </div>
         </div>
 
         <!-- Error Screen -->
         <div id="errorScreen" class="screen">
-            <div class="error-card">
-                <div class="error-icon">⚠️</div>
+            <div class="error-card glass-card">
+                <div class="error-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
                 <h2>Oops!</h2>
                 <p id="errorMessage">Something went wrong.</p>
-                <button id="retryBtn" class="btn-primary">Try Again</button>
+                <button id="retryBtn" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    Try Again
+                </button>
             </div>
         </div>
     </div>
