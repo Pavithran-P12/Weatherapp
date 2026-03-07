@@ -6,24 +6,24 @@
 }
 
 :root {
-    --primary: #60a5fa;
-    --primary-dark: #3b82f6;
-    --accent: #a78bfa;
-    --accent-glow: rgba(96, 165, 250, 0.18);
-    --accent-gradient: linear-gradient(135deg, #60a5fa, #a78bfa);
-    --bg: #0a0e17;
-    --bg-card: rgba(17, 24, 39, 0.75);
-    --text: #e2e8f0;
-    --text-light: #94a3b8;
-    --card-bg: rgba(17, 24, 39, 0.75);
-    --card-border: rgba(255, 255, 255, 0.06);
-    --detail-bg: rgba(96, 165, 250, 0.08);
-    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+    --primary: #d4a843;
+    --primary-dark: #b8912e;
+    --accent: #c07830;
+    --accent-glow: rgba(212, 168, 67, 0.18);
+    --accent-gradient: linear-gradient(135deg, #d4a843, #c07830);
+    --bg: #0a0a1a;
+    --bg-card: rgba(15, 15, 35, 0.8);
+    --text: #e8e0d0;
+    --text-light: #b8a88a;
+    --card-bg: rgba(15, 15, 35, 0.8);
+    --card-border: rgba(212, 168, 67, 0.1);
+    --detail-bg: rgba(212, 168, 67, 0.08);
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
     --radius: 20px;
     --radius-sm: 12px;
     --transition: 0.35s cubic-bezier(.4,0,.2,1);
-    --dot-color: rgba(255, 255, 255, 0.03);
+    --dot-color: rgba(212, 168, 67, 0.03);
 }
 
 body {
@@ -36,8 +36,8 @@ body {
     padding: 16px;
     overflow-x: hidden;
     background:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(96, 165, 250, 0.1), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(167, 139, 250, 0.07), transparent),
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 168, 67, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(192, 120, 48, 0.06), transparent),
         radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px,
         var(--bg);
     color: var(--text);
@@ -47,15 +47,15 @@ body {
 }
 
 /* ===== Dynamic Weather Backgrounds (dark-tinted) ===== */
-body.clear        { background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.15), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0e17; }
-body.clouds       { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163, 184, 0.12), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0e17; }
+body.clear        { background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 67, 0.12), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0a1a; }
+body.clouds       { background: radial-gradient(ellipse at 50% 0%, rgba(148, 140, 120, 0.1), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0a1a; }
 body.rain,
-body.drizzle      { background: radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.15), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #060a14; }
-body.thunderstorm { background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.12), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #050810; }
-body.snow         { background: radial-gradient(ellipse at 50% 0%, rgba(226, 232, 240, 0.1), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0c1220; }
+body.drizzle      { background: radial-gradient(ellipse at 50% 0%, rgba(100, 120, 160, 0.12), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #08081a; }
+body.thunderstorm { background: radial-gradient(ellipse at 50% 0%, rgba(120, 80, 40, 0.12), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #06060f; }
+body.snow         { background: radial-gradient(ellipse at 50% 0%, rgba(200, 200, 210, 0.08), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0c0c20; }
 body.mist,
 body.fog,
-body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163, 184, 0.1), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0e17; }
+body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(160, 140, 110, 0.08), transparent 60%), radial-gradient(circle, var(--dot-color) 1px, transparent 1px) 0 0 / 24px 24px, #0a0a1a; }
 
 /* ===== Floating Particles ===== */
 .bg-particles {
@@ -71,7 +71,7 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
     display: block;
     width: 20px;
     height: 20px;
-    background: rgba(96, 165, 250, 0.06);
+    background: rgba(212, 168, 67, 0.06);
     border-radius: 50%;
     animation: particleFloat linear infinite;
 }
@@ -126,7 +126,26 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(212, 168, 67, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.04), transparent);
+    animation: cardShimmer 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes cardShimmer {
+    0% { left: -100%; }
+    50% { left: 200%; }
+    100% { left: 200%; }
 }
 
 /* ===== Permission Screen ===== */
@@ -154,10 +173,16 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
 }
 
 .permission-card h1 span {
-    background: var(--accent-gradient);
+    background: linear-gradient(135deg, #8a6d2b, #f5d76e, #d4a843, #f5d76e, #8a6d2b);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: shimmerText 4s linear infinite;
+}
+@keyframes shimmerText {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
 
 .permission-card p {
@@ -193,7 +218,7 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
 }
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(96, 165, 250, 0.35);
+    box-shadow: 0 8px 28px rgba(212, 168, 67, 0.35);
 }
 .btn-primary:active {
     transform: translateY(0);
@@ -286,7 +311,7 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
 }
 .loader-ring:nth-child(1) { animation: spin 1.2s linear infinite; }
 .loader-ring:nth-child(2) { inset: 8px; border-top-color: var(--accent); animation: spin 1.6s linear infinite reverse; }
-.loader-ring:nth-child(3) { inset: 16px; border-top-color: rgba(96, 165, 250, 0.3); animation: spin 2s linear infinite; }
+.loader-ring:nth-child(3) { inset: 16px; border-top-color: rgba(212, 168, 67, 0.3); animation: spin 2s linear infinite; }
 .loader-icon {
     position: absolute;
     top: 50%;
@@ -439,7 +464,7 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
 }
 .detail-item:hover {
     transform: translateY(-2px);
-    background: rgba(96, 165, 250, 0.12);
+    background: rgba(212, 168, 67, 0.12);
 }
 .detail-icon-wrap {
     display: flex;
@@ -503,7 +528,7 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
 .btn-locate:hover {
     background: var(--accent);
     color: #fff;
-    box-shadow: 0 4px 18px rgba(167, 139, 250, 0.3);
+    box-shadow: 0 4px 18px rgba(192, 120, 48, 0.3);
     transform: translateY(-1px);
 }
 
@@ -598,13 +623,29 @@ body.haze         { background: radial-gradient(ellipse at 50% 0%, rgba(148, 163
     background: var(--bg-card);
     border: 1px solid var(--card-border);
     color: var(--text-light);
-    transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition);
+    transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 .footer-links a:hover {
     background: var(--accent-glow);
     color: var(--primary);
     border-color: var(--primary);
     transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(212, 168, 67, 0.2);
+}
+.footer-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 10px auto;
+}
+.footer-credits {
+    font-size: 11px;
+    color: #7a6f5f;
+    margin-top: 6px;
+}
+.footer-credits a {
+    color: var(--primary);
+    font-weight: 500;
 }
 .inline-icon {
     display: inline-block;
